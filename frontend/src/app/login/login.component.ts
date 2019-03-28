@@ -30,9 +30,7 @@ export class LoginComponent implements OnInit {
 
   public onSubmit() {
 
-    UserRequest = this.registerForm.value;
-
-    this.UserService.authorizeUser();
+    this.UserService.authorizeUser(this.registerForm.value.email, this.registerForm.value.password);
 
   }
 

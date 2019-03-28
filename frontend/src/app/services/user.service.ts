@@ -9,29 +9,32 @@ export class UserService {
   AccessToken = null;
 
   constructor(private http: HttpClient) {
-    console.log(this.AccessToken);
+    // console.log(this.AccessToken);
 
-    this.authorizeUser();
+    // this.authorizeUser();
 
   }
 
-  public authorizeUser() {
+  public authorizeUser(email: string, pass: string) {
 
     const httpBody = new HttpParams()
       .set('grant_type', 'password')
       .set('client_id', '2')
       .set('client_secret', '1KRoGsF0m0jgQfLbRWbZLgPeHUTiwf239Iaoeyqs')
-      .set('username', 'a.becor94@gmail.com')
-      .set('password', 'kkpipip2');
+      .set('username', email)
+      .set('password', pass);
     return this.http.post('http://localhost:8000/oauth/token', httpBody, this.getArgHeaders()).subscribe((data) => {
         this.AccessToken = data.access_token;
+        alert('Credenciales correctas!!');
+
       }, (error) => {
 
         if (error.status === 401) {
           alert('Credenciales invalidas');
+        } else {
+          console.error('Se ha encontrado el siguiente error, por favor contacte al administrador.');
+          console.error(error);
         }
-        console.error('Se ha encontrado el siguiente error, por favor contacte al administrador.');
-        console.error(error);
 
       }
     );
