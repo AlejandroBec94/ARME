@@ -10,11 +10,14 @@ import {ROUTES} from './app.routes';
 import {RouterModule} from '@angular/router';
 import {UserService} from './services/user.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
+import { ProfileComponent } from './Components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
