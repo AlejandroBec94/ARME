@@ -16,6 +16,35 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function login(Request $request){
+
+        $credentials = array('email' => $request->email, 'password' => $request->password);
+        if (Auth::attempt($credentials, false)) {
+//            $IpInfo = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip=' . $request->ip() . '&radius=50'));
+            /*DB::table('intra_logs')->insert([
+                [
+                    'LogUserID' => Auth::user()->UserID,
+                    'LogUserCountry' => Auth::user()->UserCountry,
+                    'LogCountry' => $IpInfo['geoplugin_city'],
+                    'LogType' => 'Login',
+                    'LogIP' => $request->ip(),
+                    'LogIPExtraInfo' => json_encode($IpInfo),
+                ],
+            ]);*/
+//            exec("php -f auto_login_intra.php ".$request->UserNick. " ".$request->password);
+            return  auth()->guard('api')->user();;
+//            return redirect()->intended('/');
+        } else {
+            //when echoing something here it is always displayed thus admin login is just refreshed.
+            return redirect('/login')->withInput()->with('message', 'Login Failed');
+        }
+
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -95,4 +124,5 @@ class UserController extends Controller
     {
         //
     }
+
 }

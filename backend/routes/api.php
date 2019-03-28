@@ -16,6 +16,6 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 Route::group(['middleware' => ['auth:api']],function (){
-//    Route::post('update',['uses'=>'C_Update@handle']);
+    Route::post('login','UserController@login');
     Route::resource('users','UserController');
 });

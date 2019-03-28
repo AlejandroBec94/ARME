@@ -11,9 +11,9 @@ export class LoginComponent {
 
   constructor(private userService: UserService) {
 
-    this.userService.getUser(1).subscribe(data => {
+    /*this.userService.getUser(1).subscribe(data => {
       console.log(data);
-    });
+    });*/
 
   }
 
