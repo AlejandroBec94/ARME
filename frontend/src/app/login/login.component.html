@@ -6,6 +6,8 @@
 <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="assets/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="assets/assets/css/users/login-2.css" rel="stylesheet" type="text/css"/>
+<link href="assets/plugins/loaders/csspin.css" rel="stylesheet" type="text/css" />
+
 
 
 <form class="form-login" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -47,8 +49,10 @@
         </div>
       </div>-->
 
-      <button class="btn btn-lg btn-gradient-warning btn-block btn-rounded mb-4 mt-5" type="submit">Acceder</button>
+      <button id="submit" class="btn btn-lg btn-gradient-warning btn-block btn-rounded mb-4 mt-5" type="submit">Acceder</button>
 
+
+      <div id="loading" class="cp-spinner cp-morph hidden" style="margin-left: 40%;margin-bottom: 10px;"></div>
       <div class="forgot-pass text-center">
         <a href="user_pass_recovery_2.html">¿Olvidaste tu contraseña? :(</a>
       </div>
