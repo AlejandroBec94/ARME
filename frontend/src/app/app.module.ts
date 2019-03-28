@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ROUTES} from './app.routes';
 import {RouterModule} from '@angular/router';
 import {UserService} from './services/user.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {UserService} from './services/user.service';
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(ROUTES),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

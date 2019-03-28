@@ -23,9 +23,18 @@ export class UserService {
       .set('client_secret', '1KRoGsF0m0jgQfLbRWbZLgPeHUTiwf239Iaoeyqs')
       .set('username', 'a.becor94@gmail.com')
       .set('password', 'kkpipip2');
-    return this.http.post('http://localhost:8000/oauth/token', httpBody, this.getArgHeaders()).subscribe(data => {
-      this.AccessToken = data.access_token;
-    });
+    return this.http.post('http://localhost:8000/oauth/token', httpBody, this.getArgHeaders()).subscribe((data) => {
+        this.AccessToken = data.access_token;
+      }, (error) => {
+
+        if (error.status === 401) {
+          alert('Credenciales invalidas');
+        }
+        console.error('Se ha encontrado el siguiente error, por favor contacte al administrador.');
+        console.error(error);
+
+      }
+    );
 
   }
 
